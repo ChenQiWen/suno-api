@@ -9,8 +9,6 @@ import { Solver } from '@2captcha/captcha-solver';
 import { paramsCoordinates } from '@2captcha/captcha-solver/dist/structs/2captcha';
 import { BrowserContext, Page, Locator, chromium, firefox } from 'rebrowser-playwright-core';
 import { createCursor, Cursor } from 'ghost-cursor-playwright';
-import { promises as fs } from 'fs';
-import path from 'node:path';
 
 // sunoApi instance caching
 const globalForSunoApi = global as unknown as { sunoApiCache?: Map<string, SunoApi> };
@@ -347,6 +345,8 @@ class SunoApi {
           for (let j = 0; j < 3; j++) { // try several times because sometimes 2Captcha could return an error
             try {
               logger.info('Sending the CAPTCHA to 2Captcha');
+              const { promises: fs } = await import('fs');
+              const path = await import('path');
               const payload: paramsCoordinates = {
                 body: (await challenge.screenshot({ timeout: 5000 })).toString('base64'),
                 lang: process.env.BROWSER_LOCALE
