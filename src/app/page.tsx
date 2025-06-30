@@ -9,7 +9,7 @@ export default function Home() {
 ---
 ## 👋 Introduction
 
-Suno.ai v3 is an amazing AI music service. Although the official API is not yet available, we couldn't wait to integrate its capabilities somewhere.
+
 
 We discovered that some users have similar needs, so we decided to open-source this project, hoping you'll like it.
 
