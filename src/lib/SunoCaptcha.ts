@@ -5,6 +5,8 @@ import { paramsCoordinates } from '@2captcha/captcha-solver/dist/structs/2captch
 import { isPage, sleep, waitForRequests } from '@/lib/utils';
 import pino from 'pino';
 import yn from 'yn';
+import fs from 'fs/promises';
+import path from 'path';
 
 const logger = pino();
 
@@ -132,8 +134,6 @@ export async function getCaptchaToken(
         const frame = page.frameLocator('iframe[title*="hCaptcha"]');
         const challenge = frame.locator('.challenge-container');
         try {
-            const fs = await import('fs/promises');
-            const path = await import('path');
             let wait = true;
             while (true) {
                 if (wait)
