@@ -11,6 +11,7 @@ const nextConfig = {
       config.externals.push('@playwright/browser-chromium');
       config.externals.push('ghost-cursor-playwright');
       config.externals.push('@2captcha/captcha-solver');
+      config.externals.push('electron');
     }
     return config;
   },
