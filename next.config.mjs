@@ -1,10 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  webpack: (config) => {
+  webpack: (config, { isServer }) => {
     config.module.rules.push({
       test: /\.(ttf|html)$/i,
       type: 'asset/resource'
     });
+    if (isServer) {
+      config.externals = config.externals || [];
+      config.externals.push('rebrowser-playwright-core');
+      config.externals.push('@playwright/browser-chromium');
+    }
     return config;
   },
   experimental: {
