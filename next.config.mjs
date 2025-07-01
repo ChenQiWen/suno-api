@@ -10,6 +10,7 @@ const nextConfig = {
       config.externals.push('rebrowser-playwright-core');
       config.externals.push('@playwright/browser-chromium');
       config.externals.push('ghost-cursor-playwright');
+      config.externals.push('@2captcha/captcha-solver');
     }
     return config;
   },
